@@ -62,7 +62,8 @@ def main():
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(check_membership))
-
+    app.add_handler(CommandHandler("addmovie", add_movie_cmd))
+    
     app.run_polling()
 
 if __name__ == "__main__":
