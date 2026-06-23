@@ -67,3 +67,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+    user_state = {}
+
+async def add_movie_cmd(update, context):
+    user_id = update.message.from_user.id
+    user_state[user_id] = {"step": "waiting_movie"}
+
+    await update.message.reply_text("🎬 فیلم را الآن فوروارد کن (از کانال خصوصی)")
