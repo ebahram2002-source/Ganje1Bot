@@ -41,7 +41,11 @@ async def check_membership(update: Update, context: ContextTypes.DEFAULT_TYPE):
             movie_id = context.user_data.get("movie_id")
 
             if movie_id:
-                await query.message.reply_text(f"🎬 فیلم شما آماده است:\nکد فیلم: {movie_id}")
+               await context.bot.copy_message(
+    chat_id=user_id,
+    from_chat_id=CHANNEL_ID,
+    message_id=int(movie_id)
+)
             else:
                 await query.message.reply_text("فیلمی انتخاب نشده است.")
         else:
