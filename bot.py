@@ -1,3 +1,4 @@
+from database import add_movie, get_movie
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
@@ -38,13 +39,13 @@ async def check_membership(update: Update, context: ContextTypes.DEFAULT_TYPE):
         member = await context.bot.get_chat_member(CHANNEL_ID, user_id)
 
         if member.status in ["member", "creator", "administrator"]:
-            movie_id = context.user_data.get("movie_id")
+            movie_id = get_movie(movie_id)
 
             if movie_id:
                await context.bot.copy_message(
     chat_id=user_id,
-    from_chat_id=CHANNEL_ID,
-    message_id=int(movie_id)
+   from_chat_id=CHANNEL_ID,
+message_id=movie_id
 )
             else:
                 await query.message.reply_text("فیلمی انتخاب نشده است.")
