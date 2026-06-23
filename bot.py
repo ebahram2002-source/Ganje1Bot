@@ -1,7 +1,9 @@
-from database import add_movie, get_movie
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+from database import add_movie, get_movie
 
+import random
+import string
 BOT_TOKEN = "8931502232:AAG-BZy0HOWSEPKSW_JnPUJvosNYov7cgBw"
 
 CHANNEL_USERNAME = "@blackempire_vip"
